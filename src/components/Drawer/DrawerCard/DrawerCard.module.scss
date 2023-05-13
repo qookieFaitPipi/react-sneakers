@@ -1,0 +1,48 @@
+.drawerCard {
+  width: 420px;
+  height: 119px;
+  border: 1px solid #808080;
+  margin-top: 15px;
+  border-radius: 20px;
+  padding: 10px;
+
+  .drawerCardContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .drawerCardImageBlock {
+
+      .drawerCardImage {
+        width: 112px;
+        height: 112px;
+      }
+    }
+
+    .drawerCardInfoBlock {
+      display: flex;
+      flex-direction: column;
+
+      .drawerCardTitle {
+        margin-bottom: 5px;
+      }
+      .drawerCardPrice {
+        font-weight: 600;
+      }
+    }
+    .drawerCardButtonBlock {
+
+      .drawerCardDart {
+        padding: 5px;
+        font-size: 24px;
+        cursor: pointer;
+        color:#000;
+        transition: 0.5s;
+      }
+
+      .drawerCardDart:hover{
+        color: red;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.drawerTotal {
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+
+  .drawerTotalContent {
+    margin: 25px;
+
+    .drawerTotalResultBlock {
+      
+    }
+    .drawerTotalTaxBlock {
+      margin-top: 10px;
+    }
+    .drawerTotalButtonBlock {
+      margin-top: 20px;
+      
+      .drawerTotalButton {
+        height: 55px;
+        width: 325px;
+        background-color: #9DD458;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 20px;
+        color: #fff;
+      }
+    }
+  }
+}
