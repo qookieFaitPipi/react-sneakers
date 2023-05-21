@@ -1,0 +1,65 @@
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+
+  .drawer {    
+    position: absolute;
+    width: 385px;
+    height: 100%;
+    right: 0;
+    background-color: #fff;
+    box-shadow: -10px 4px 24px rgba(0,0,0,0.1);
+    overflow-y: auto;
+
+
+    .drawerContent {
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+      
+      .drawerTop {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        width: 100%;
+
+        .drawerTitleBlock {
+          
+          .drawerTitle {
+            font-size: 24px;
+          }
+        }
+        .drawerDartBlock {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          border: 1px #808080 solid;
+          width: 40px;
+          height: 40px;
+          border-radius: 10px;
+          transition: 0.5s;
+          opacity: 0.7;
+
+          .drawerDart {
+            font-size: 24px;
+          }
+        }
+        .drawerDartBlock:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.diable {
+  display: none;
+  z-index: -1;
+}

@@ -1,0 +1,10 @@
+.drawerList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .emptyCardImage {
+    width: 100px;
+    height: 100px;
+  }
+}

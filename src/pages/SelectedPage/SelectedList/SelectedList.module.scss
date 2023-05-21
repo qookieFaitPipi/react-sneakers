@@ -1,0 +1,9 @@
+.selectedList {
+  margin-top: 20px;
+
+  .selectedListContent {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
