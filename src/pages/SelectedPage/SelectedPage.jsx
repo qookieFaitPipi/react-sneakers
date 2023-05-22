@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 
 // components
 import Header from './../../multComponents/Header/Header';
+import SelectedInfo from './SelectedInfo/SelectedInfo';
 import SelectedList from './SelectedList/SelectedList';
 import Drawer from './../HomePage/Drawer/Drawer';
 const SelectedPage = () => {
@@ -13,6 +14,7 @@ const SelectedPage = () => {
         isDrawerOpened={isDrawerOpened}
         setIsDrawerOpened={setIsDrawerOpened}
       />
+      <SelectedInfo />
       <SelectedList />
       <Drawer
         isDrawerOpened={isDrawerOpened}
@@ -22,4 +24,4 @@ const SelectedPage = () => {
   )
 }
 
-export default SelectedPage
+export default React.memo(SelectedPage);

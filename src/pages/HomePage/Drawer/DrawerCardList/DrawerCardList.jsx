@@ -38,4 +38,4 @@ const DrawerCardList = () => {
   )
 }
 
-export default DrawerCardList
+export default React.memo(DrawerCardList);

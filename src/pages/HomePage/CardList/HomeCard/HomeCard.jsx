@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './HomeCard.module.scss';
 
 // images
@@ -16,7 +16,24 @@ const Card = (props) => {
 
 
   const [isAdded, setIsAdded] = useState(false);
-  const [isSelected, setIsSelected] = useState(false)
+  const [isSelected, setIsSelected] = useState(false);
+
+  useEffect(() => {
+    for(let i=0;i<selectedCardList.length;i++) {
+      if(selectedCardList[i].id == props.id) {
+        setIsSelected(true);
+      } 
+    }
+  }, [selectedCardList])
+
+  useEffect(() => {
+    setIsAdded(false)
+    for(let i=0;i<drawerCardList.length;i++) {
+      if(drawerCardList[i].id == props.id) {
+        setIsAdded(true);
+      }
+    }
+  }, [drawerCardList])
 
   const toggleCard = (id, title, price, imageUrl) => {
     if(isAdded) {

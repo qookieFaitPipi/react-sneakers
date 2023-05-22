@@ -19,7 +19,7 @@ const DrawerTotal = (props) => {
             Итог: {totalPrice}₽
           </div>
           <div className={styles.drawerTotalTaxBlock}>
-            Налог 5%: {totalPrice * 0.05}
+            Налог 5%: {totalPrice * 0.05}₽
           </div>
           <div className={styles.drawerTotalButtonBlock}>
             <input className={styles.drawerTotalButton} value='Оформить заказ' type="submit" />
@@ -40,4 +40,4 @@ const DrawerTotal = (props) => {
   )
 }
 
-export default DrawerTotal
+export default React.memo(DrawerTotal);

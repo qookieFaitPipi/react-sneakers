@@ -9,8 +9,6 @@ import {Context} from "../../../Context";
 
 const CardList = (props) => {
   const {sneakersList, setSneakersList} = useContext(Context);
-
-  console.log(props.searchValue)
   return (
     <div className={styles.cardList}>
       <div className={styles.cardListContent}>

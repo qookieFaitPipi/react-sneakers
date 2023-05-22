@@ -1,0 +1,25 @@
+.selectedInfo {
+  margin-top: 20px;
+
+  .selectedInfoContent {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .selectedInfoBackBlock {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px #808080 solid;
+      border-radius: 10px;
+
+      .selectedInfoBack {
+        padding: 15px;
+      }
+    } 
+    .selectedInfoTextBlock {
+      font-size: 24px;
+      font-weight: 600;
+    }
+  }
+}

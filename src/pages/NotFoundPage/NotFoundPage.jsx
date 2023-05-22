@@ -10,4 +10,4 @@ const NotFoundPage = () => {
   )
 }
 
-export default NotFoundPage
+export default React.memo(NotFoundPage);

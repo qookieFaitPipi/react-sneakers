@@ -13,7 +13,7 @@ const DrawerCard = (props) => {
     console.log(id)
     setDrawerCardList(drawerCardList.filter(p => p.id !== id));
     setTotalPrice(totalPrice - price);
-
+    
   }
 
   return (
@@ -38,4 +38,4 @@ const DrawerCard = (props) => {
   )
 }
 
-export default DrawerCard
+export default React.memo(DrawerCard);
