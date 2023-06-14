@@ -34,7 +34,7 @@ const Header = (props) => {
           </div>
           <div className={styles.headerIconBlock}>
             <Link to='/selected'><img className={styles.headerIconHeart} src={heart} alt="" /></Link>
-            <img className={styles.headerIconUser} src={user} alt="" />
+            <Link onClick={() => props.setEntryModalState(!props.entryModalState)} to={props.entryModalState ? '/account' : '/'}><img className={styles.headerIconUser} src={user} alt="" /></Link>
           </div>
         </div>
       </div>

@@ -20,14 +20,14 @@ const SelectedList = () => {
         ?
         <div className={styles.selectedListItems}>
           {selectedCardList.map((obj) =>
-          <HomeCard 
-            key={obj.id} 
-            id={obj.id} 
-            title={obj.title} 
-            price={obj.price} 
-            imageUrl={obj.imageUrl} 
-          />
-        )}
+            <HomeCard 
+              key={obj.id} 
+              id={obj.id} 
+              title={obj.title} 
+              price={obj.price} 
+              imageURL={obj.imageURL} 
+            />
+          )}
         </div>
         :
         <div className={styles.selectedListNone}>

@@ -35,47 +35,113 @@ const Card = (props) => {
     }
   }, [drawerCardList])
 
-  const toggleCard = (id, title, price, imageUrl) => {
+  // add to select
+  const toggleCard = (id, key, title, price, imageURL) => {
     if(isAdded) {
-      setDrawerCardList(drawerCardList.filter(p => p.id !== id));
-      setTotalPrice(totalPrice - price);
+      fetch('http://0.0.0.0:5000/delete_sneakers_from_select/' + key, {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+      })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        //console.log(data);
+        if(data.is_deleted == true) {
+          setDrawerCardList(drawerCardList.filter(p => p.id !== id));
+          setTotalPrice(totalPrice - price);
+          setIsAdded(!isAdded);
+        }
+      })
     } else {
       const newCard = {
         id: id,
+        key: key,
         title: title,
         price: price,
-        imageUrl: imageUrl,
+        imageURL: imageURL,
       }
-      setDrawerCardList([...drawerCardList, newCard]);
-      setTotalPrice(totalPrice + price);
+      fetch('http://0.0.0.0:5000/add_sneakers_to_select', {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newCard)
+      })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        //console.log(data);
+        if(data.is_added == true) {
+          setDrawerCardList([...drawerCardList, newCard]);
+          setTotalPrice(totalPrice + price);
+          setIsAdded(!isAdded);
+        }
+      })
     }
-    setIsAdded(!isAdded);
   }
-
-  const selectCard = (id, title, price, imageUrl) => {
+  // add to cart
+  const selectCard = (id, key, title, price, imageURL) => {
     if(isSelected) {
-      setSelectedCardList(selectedCardList.filter(p => p.id !== id))
+      fetch('http://0.0.0.0:5000/delete_sneakers_from_cart/' + key, {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+      })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        //console.log(data);
+        if(data.is_deleted == true) {
+          setSelectedCardList(selectedCardList.filter(p => p.id !== id));
+          setIsSelected(!isSelected);
+        }
+      })
     } else {
       const newCard = {
         id: id,
+        key: key,
         title: title,
         price: price,
-        imageUrl: imageUrl,
+        imageURL: imageURL,
       }
-      setSelectedCardList([...selectedCardList, newCard]);
-
+      fetch('http://0.0.0.0:5000/add_sneakers_to_cart', {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newCard)
+      })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        //console.log(data);
+        if(data.is_added == true) {
+          setSelectedCardList([...selectedCardList, newCard]);
+          setIsSelected(!isSelected);
+        }
+      })
     }
-    setIsSelected(!isSelected);
   }
 
   return (
     <div className={styles.card}>
       <div className={styles.cardContent}>
-        <div className={styles.cardFavoritesBlock} onClick={() => selectCard(props.id, props.title, props.price, props.imageUrl)}>
+        <div className={styles.cardFavoritesBlock} onClick={() => selectCard(props.id, props.itemKey, props.title, props.price, props.imageURL)}>
           <img className={styles.cardFavoritesIcon} src={isSelected ? pinnedHeart : heart} alt="" />
         </div>
         <div className={styles.cardImageBlock}> 
-          <img className={styles.cardImage} src={props.imageUrl} alt="icon"/>
+          <img className={styles.cardImage} src={props.imageURL} alt="icon"/>
         </div>
         <div className={styles.cardTitleBlock}>
           <div className={styles.cardTitle}>{props.title}</div>
@@ -85,7 +151,7 @@ const Card = (props) => {
             <div className={styles.cardPrice}>Цена:</div>
             <div className={styles.cardPriceValue}>{props.price}</div>
           </div>
-          <div className={isAdded ? styles.cardButtonAddBlock : styles.cardButtonBlock} onClick={() => toggleCard(props.id, props.title, props.price, props.imageUrl)}>
+          <div className={isAdded ? styles.cardButtonAddBlock : styles.cardButtonBlock} onClick={() => toggleCard(props.id, props.itemKey, props.title, props.price, props.imageURL)}>
             <div className={styles.cardAdd}> {isAdded ? 'x' : '+'}</div>
           </div>
         </div>
