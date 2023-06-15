@@ -9,18 +9,31 @@ const DrawerCard = (props) => {
   const {drawerCardList, setDrawerCardList} = useContext(Context);
   const {totalPrice, setTotalPrice} = useContext(Context);
 
-  const deleteDrawerCard = (id, price) => {
-    console.log(id)
-    setDrawerCardList(drawerCardList.filter(p => p.id !== id));
-    setTotalPrice(totalPrice - price);
-    
+  const deleteDrawerCard = (id, key, price) => {
+    fetch('http://0.0.0.0:5000/delete_sneakers_from_select/' + key, {
+      method: 'post',
+      headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+      },
+    })
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      //console.log(data);
+      if(data.is_deleted == true) {
+        setDrawerCardList(drawerCardList.filter(p => p.id !== id));
+        setTotalPrice(totalPrice - price);
+      }
+    })
   }
 
   return (
     <div className={styles.drawerCard}>
       <div className={styles.drawerCardContent}>
         <div className={styles.drawerCardImageBlock}>
-          <img className={styles.drawerCardImage} src={props.imageUrl} alt="" />
+          <img className={styles.drawerCardImage} src={props.imageURL} alt="" />
         </div>
         <div className={styles.drawerCardInfoBlock}>
           <div className={styles.drawerCardTitle}>
@@ -30,7 +43,7 @@ const DrawerCard = (props) => {
             {props.price}
           </div>
         </div>
-        <div className={styles.drawerCardButtonBlock} onClick={() => deleteDrawerCard(props.id, props.price)}>
+        <div className={styles.drawerCardButtonBlock} onClick={() => deleteDrawerCard(props.id, props.itemKey, props.price)}>
           <div className={styles.drawerCardDart}>x</div>
         </div>
       </div>

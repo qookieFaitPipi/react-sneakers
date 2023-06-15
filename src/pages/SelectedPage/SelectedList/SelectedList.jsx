@@ -22,7 +22,8 @@ const SelectedList = () => {
           {selectedCardList.map((obj) =>
             <HomeCard 
               key={obj.id} 
-              id={obj.id} 
+              id={obj.id}
+              itemKey={obj.key}
               title={obj.title} 
               price={obj.price} 
               imageURL={obj.imageURL} 

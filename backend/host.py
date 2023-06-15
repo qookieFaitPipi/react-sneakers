@@ -43,6 +43,7 @@ def get_sneakers():
   items = list(map(lambda el: {'id': el.id, 'key': el.key, 'title': el.title, 'price': el.price, 'imageURL': 'http://0.0.0.0:5000/' + el.imageURL}, items))
   return jsonify(items)
 
+
 @host.route('/add_sneakers_to_select', methods=["POST"])
 def add_sneakers_to_select():
   data = request.get_json()
@@ -67,6 +68,7 @@ def remove_sneakers_from_select(key):
 
   except:
     return jsonify({"is_deleted": False})
+
 
 @host.route('/add_sneakers_to_cart', methods=["POST"])
 def add_sneakers_to_cart():
@@ -133,6 +135,21 @@ def entry():
     return jsonify({"is_entered": True, "userLogin": data['login']})
   else:
     return jsonify({"is_entered": False})
+
+
+@host.route('/get_drawer_cardlist')
+def get_drawer_cardlist():
+  items = CartSneakers.query.order_by(CartSneakers.key).all()
+  items = list(map(lambda el: {'id': el.id, 'key': el.key, 'title': el.title, 'price': el.price, 'imageURL': el.imageURL}, items))
+  return jsonify(items)
+
+
+@host.route('/get_select_cardlist')
+def get_select_cardlist():
+  items = SelectSneakers.query.order_by(SelectSneakers.key).all()
+  items = list(map(lambda el: {'id': el.id, 'key': el.key, 'title': el.title, 'price': el.price, 'imageURL': el.imageURL}, items))
+  return jsonify(items)
+
 
 
 if __name__ == "__main__":

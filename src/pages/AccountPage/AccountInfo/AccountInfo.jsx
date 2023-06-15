@@ -10,6 +10,11 @@ import {Context} from './../../../Context/index.js';
 const AccountInfo = () => {
   const {cookies, setCookies} = useContext(Context);
 
+  const userExit = () => {
+    setCookies('userLogin', '' , {path: '/'});
+    window.location.href = '/';
+  }
+
   return (
     <div className={styles.accountInfo}>
       <div className={styles.accountInfoContent}>
@@ -22,6 +27,9 @@ const AccountInfo = () => {
           </div>
           <div className={styles.accountDescriptionBlock}>
             <div className={styles.accountDescription}>бла бла бла бла</div>
+          </div>
+          <div className={styles.accountExitBlock}>
+            <div className={styles.accountExitInput} onClick={userExit}>Выйти</div>
           </div>
         </div>
       </div>

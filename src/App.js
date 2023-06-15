@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 // react-router-dom
 import {Routes,Route} from 'react-router-dom';
@@ -25,6 +25,24 @@ function App() {
   // modalsStates
   const [entryModalState, setEntryModalState] = useState(false);
   const [registerModalState, setRegisterModalState] = useState(false);
+
+  useEffect(() => {
+    fetch('http://0.0.0.0:5000/get_drawer_cardlist')
+    .then(response => response.json())
+    .then(data => setDrawerCardList(data)).catch(()=>{
+      alert("Ошибка. Проверьте подключение");
+    }) 
+    fetch('http://0.0.0.0:5000/get_select_cardlist')
+    .then(response => response.json())
+    .then(data => setSelectedCardList(data)).catch(()=>{
+      alert("Ошибка. Проверьте подключение");
+    })
+    let total = 0;
+    for(let i=0;i<drawerCardList.length;i++) {
+      total += drawerCardList[i].price;
+    }
+    setTotalPrice(total)
+  }, [cookies.userLogin])
 
   return (
     <Context.Provider value={{

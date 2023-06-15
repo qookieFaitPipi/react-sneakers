@@ -20,7 +20,7 @@ const Card = (props) => {
 
   useEffect(() => {
     for(let i=0;i<selectedCardList.length;i++) {
-      if(selectedCardList[i].id == props.id) {
+      if(selectedCardList[i].key == props.itemKey) {
         setIsSelected(true);
       } 
     }
@@ -29,13 +29,13 @@ const Card = (props) => {
   useEffect(() => {
     setIsAdded(false)
     for(let i=0;i<drawerCardList.length;i++) {
-      if(drawerCardList[i].id == props.id) {
+      if(drawerCardList[i].key == props.itemKey) {
         setIsAdded(true);
       }
     }
   }, [drawerCardList])
 
-  // add to select
+  // add to drawer
   const toggleCard = (id, key, title, price, imageURL) => {
     if(isAdded) {
       fetch('http://0.0.0.0:5000/delete_sneakers_from_select/' + key, {
@@ -53,7 +53,6 @@ const Card = (props) => {
         if(data.is_deleted == true) {
           setDrawerCardList(drawerCardList.filter(p => p.id !== id));
           setTotalPrice(totalPrice - price);
-          setIsAdded(!isAdded);
         }
       })
     } else {
@@ -80,12 +79,11 @@ const Card = (props) => {
         if(data.is_added == true) {
           setDrawerCardList([...drawerCardList, newCard]);
           setTotalPrice(totalPrice + price);
-          setIsAdded(!isAdded);
         }
       })
     }
   }
-  // add to cart
+  // add to select
   const selectCard = (id, key, title, price, imageURL) => {
     if(isSelected) {
       fetch('http://0.0.0.0:5000/delete_sneakers_from_cart/' + key, {

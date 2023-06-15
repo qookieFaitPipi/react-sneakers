@@ -34,6 +34,17 @@
           font-size: 20px;
         }
       }
+      .accountExitBlock {
+        margin-top: 40px;
+
+        .accountExitInput {
+          padding: 20px 50px 20px 50px;
+          background-color: brown;
+          border-radius: 20px;
+          color: #fff;
+          cursor: pointer;
+        }
+      }
     }
   }
 }

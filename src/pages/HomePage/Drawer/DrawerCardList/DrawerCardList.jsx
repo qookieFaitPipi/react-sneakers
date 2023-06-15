@@ -21,11 +21,12 @@ const DrawerCardList = () => {
           <>
             {drawerCardList.map((obj) => 
               <DrawerCard 
-                key={obj.id}
-                id={obj.id}
-                title={obj.title}
-                price={obj.price}
-                imageUrl={obj.imageUrl}
+                key={obj.id} 
+                id={obj.id} 
+                itemKey={obj.key}
+                title={obj.title} 
+                price={obj.price} 
+                imageURL={obj.imageURL}
               />
             )}
           </>
