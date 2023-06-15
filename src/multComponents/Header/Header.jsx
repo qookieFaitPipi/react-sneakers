@@ -13,7 +13,14 @@ import {useContext} from 'react';
 import {Context} from "../../Context";
 
 const Header = (props) => {
+  const {cookies, setCookies} = useContext(Context);
   const {totalPrice, setTotalPrice} = useContext(Context);
+
+  const checkLogin = () => {
+    if(!cookies.userLogin) {
+      props.setEntryModalState(!props.entryModalState)
+    }
+  }
 
   return (
     <div className={styles.header}>
@@ -34,7 +41,7 @@ const Header = (props) => {
           </div>
           <div className={styles.headerIconBlock}>
             <Link to='/selected'><img className={styles.headerIconHeart} src={heart} alt="" /></Link>
-            <Link onClick={() => props.setEntryModalState(!props.entryModalState)} to={props.entryModalState ? '/account' : '/'}><img className={styles.headerIconUser} src={user} alt="" /></Link>
+            <Link onClick={checkLogin} to={cookies.userLogin ? '/account' : '/'}><img className={styles.headerIconUser} src={user} alt="" /></Link>
           </div>
         </div>
       </div>
