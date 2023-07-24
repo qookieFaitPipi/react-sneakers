@@ -4,7 +4,6 @@ from flask_cors import CORS
 
 from werkzeug.security import generate_password_hash, check_password_hash
 
-
 host = Flask(__name__)
 host.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(host)

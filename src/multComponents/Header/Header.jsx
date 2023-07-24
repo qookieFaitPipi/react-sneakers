@@ -35,14 +35,10 @@ const Header = (props) => {
           </div>
         </div>
         <div className={styles.headerRightBlock}>
-          <div className={styles.headerIconBlock} onClick={() => props.setIsDrawerOpened(true)}>
-            <img className={styles.headerIconCard} src={cart} width='18px' height='18px'/>
-            <span className={styles.headerTotalPrice}>{totalPrice} руб.</span>
-          </div>
-          <div className={styles.headerIconBlock}>
-            <Link to='/selected'><img className={styles.headerIconHeart} src={heart} alt="" /></Link>
-            <Link onClick={checkLogin} to={cookies.userLogin ? '/account' : '/'}><img className={styles.headerIconUser} src={user} alt="" /></Link>
-          </div>
+          <img className={styles.headerIconCard} src={cart} width='18px' height='18px'/>
+          <span className={styles.headerTotalPrice}>{totalPrice} руб.</span>
+          <Link to='/selected'><img className={styles.headerIconHeart} src={heart} alt="" /></Link>
+          <Link onClick={checkLogin} to={cookies.userLogin ? '/account' : '/'}><img className={styles.headerIconUser} src={user} alt="" /></Link>
         </div>
       </div>
     </div>

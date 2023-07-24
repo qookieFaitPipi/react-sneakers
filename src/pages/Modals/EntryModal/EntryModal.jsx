@@ -39,7 +39,6 @@ const EntryModal = (props) => {
         props.setEntryModalState(false);
         setCookies('userLogin', data.userLogin, {path: '/'});
         console.log(data)
-
       } else {
         alert('При авторизации произошли технические ошибки');
       }

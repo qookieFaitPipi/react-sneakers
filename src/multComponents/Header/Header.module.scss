@@ -9,6 +9,14 @@
     display: flex;
     justify-content: space-between;
 
+    @media (max-width: 767px) {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
     .headerLeftBlock {
       display: flex;
       align-items: center;
@@ -35,33 +43,34 @@
       display: flex;
       align-items: center;
 
-      .headerIconBlock {
-        display: flex;
-        margin-right: 20px;
+      @media (max-width: 767px) {
+        margin-top: 30px;
+        justify-content: center;
+      }
 
-        .headerIconCard {
-          margin-right: 5px;
-          width: 18px;
-          height: 18px;
-          cursor: pointer;
-        }
-        .headerTotalPrice {
-          cursor: pointer;
-        }
+      .headerIconCard {
+        margin-right: 5px;
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+      .headerTotalPrice {
+        cursor: pointer;
+        margin-right: 15px;
 
-        .headerIconHeart {
-          margin-right: 15px;
-          width: 18px;
-          height: 18px;
-          cursor: pointer;
-        }
+      }
 
-        .headerIconUser {
-          margin-right: 15px;
-          width: 18px;
-          height: 18px;
-          cursor: pointer;
-        }
+       .headerIconHeart {
+        margin-right: 15px;
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+
+      .headerIconUser {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
       }
     }
   }

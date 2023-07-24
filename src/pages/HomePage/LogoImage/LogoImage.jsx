@@ -11,8 +11,7 @@ const LogoImage = (props) => {
   return (
     <div className={styles.logoImageBlock}>
       <div className={styles.logoImageBlockContent}>
-        <div className={styles.logoImageContainer}>
-          <img className={styles.logoImage} src={logoImage} alt="" />
+        <div className={styles.logoImageContainer} style={{backgroundImage: `url(${logoImage})`}}>
         </div>
         <div className={styles.logoSearchContainer}>
           <div className={styles.logoSearchTitle}>{props.searchValue.length ? 'Поиск по запросу: ' : 'Все кроссовки'}</div>

@@ -5,3 +5,13 @@
   max-width: 1600px;
   margin: 0 auto;
 }
+
+html, body {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif !important;
+}
+li {
+  list-style: none;
+}
