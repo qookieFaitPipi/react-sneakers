@@ -49,8 +49,8 @@ const EntryModal = (props) => {
     <div className={props.entryModalState ? styles.active : styles.entryModal}>
       <div className={styles.entryModalContent} onClick={e => e.stopPropagation()}>
         <div className={styles.entryTitleBlock}>
-          <h4 className={styles.entryTitle}>Вход</h4>
-          <p className={styles.entryModalClose} onClick={() => props.setEntryModalState(false)}>&times;</p>
+          <div className={styles.entryTitle}>Вход</div>
+          <div className={styles.entryModalClose} onClick={() => props.setEntryModalState(false)}>&times;</div>
         </div>
         <div className={styles.entryLoginBlock}>
           <label className={styles.entryLabel}>Логин</label>

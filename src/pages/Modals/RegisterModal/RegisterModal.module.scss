@@ -41,6 +41,10 @@
     23px 0 20px -23px rgba(0, 0, 0, .8),
     0 0 40px rgba(0, 0, 0, .1) inset;
 
+    @media (max-width: 767px) {
+      width: 380px;
+    }
+
     .registerTitleBlock {
       display: flex;
       justify-content: space-between;
@@ -52,6 +56,10 @@
         font-size: 24px;
         margin-left: 32px;
         color: #000;
+
+        @media (max-width: 767px) {
+          font-size: 20px;
+        }
       }
       .registerModalClose {
         color: #c42525;
@@ -84,6 +92,10 @@
         background-color: #ebebeb;
         color: #000;
         border: 1px #999999 solid;
+
+        @media (max-width: 767px) {
+          width: 316px;
+        }
       }
     }
 
